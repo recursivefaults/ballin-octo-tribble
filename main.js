@@ -1,26 +1,29 @@
-require.config({
+requirejs.config({
     shim: {
-        backbone: {
+        'backbone': {
             exports: 'Backbone',
             deps: ['jquery', 'underscore']
         },
-        underscore: {
+        'underscore': {
             exports: '_'
         }
     },
-    baseURL: 'app',
+    baseUrl: 'app',
     paths: {
-        'coffee-script': 'libs/coffee-script',
-        cs: 'libs/cs',
-        text: 'libs/text',
-        backbone: 'libs/backbone',
-        jquery: 'libs/jquery-2.0.3',
-        underscore: 'libs/underscore-min'
+        'coffee-script': '../libs/coffee-script',
+        cs: '../libs/cs',
+        text: '../libs/text',
+        backbone: '../libs/backbone',
+        jquery: '../libs/jquery-2.0.3.min',
+        underscore: '../libs/underscore-min'
     }
 });
 
-define([
+require([
+        'backbone',
         'cs!controllers/main'
-], function(Backbone) {
-    
+], function(Backbone, Main) {
+    console.log(Backbone)
+    console.log(Main)
+    Main.initialize(); 
 });
